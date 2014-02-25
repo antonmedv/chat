@@ -7,6 +7,8 @@
 
 namespace Elfet\Chat;
 
+use Silex\Provider\SessionServiceProvider;
+use Silex\Provider\UrlGeneratorServiceProvider;
 use Symfony\Component\HttpFoundation\Response;
 
 class Application extends \Silex\Application
@@ -14,6 +16,44 @@ class Application extends \Silex\Application
     public function __construct(array $values = array())
     {
         parent::__construct($values);
+
+        $app = $this;
+
+        $app->register(new UrlGeneratorServiceProvider());
+        $app->register(new SessionServiceProvider());
+
+        $app['facebook'] = $app->share(function () use ($app) {
+            return new \Facebook([
+                'appId' => $app['facebook.app_id'],
+                'secret' => $app['facebook.secret'],
+                'allowSignedRequest' => false
+            ]);
+        });
+
+        $app['user'] = function () use ($app) {
+            return $app['session']->get('user');
+        };
+
+        $app->before(function ($request) use ($app) {
+            $user = $app['user'];
+
+            if (null === $user) {
+                $facebook = $app['facebook'];
+                $result = $facebook->api(array(
+                    'method' => 'fql.query',
+                    'query' => 'SELECT uid, name, pic_square FROM user WHERE uid = me()',
+                ));
+
+                if (!empty($result)) {
+                    $app['session']->set('user', $result[0]);
+                    return;
+                }
+
+                return $app->render('login.phtml', [
+                    'loginUrl' => $facebook->getLoginUrl(),
+                ]);
+            }
+        });
     }
 
     public function render($viewPath, $params = [])
