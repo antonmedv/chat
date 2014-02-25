@@ -12,7 +12,7 @@ $app->get('/', function () use ($app) {
 $app->get('/logout', function () use ($app) {
     $app['session']->set('user', null);
     $app['facebook']->destroySession();
-    return $app->redirect($app['url_generator']->generate('index'));
+    return $app->redirect($app->url('index'));
 })->bind('logout');
 
 $app->run();

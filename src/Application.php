@@ -7,12 +7,15 @@
 
 namespace Elfet\Chat;
 
+use Silex\Application\UrlGeneratorTrait;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
 use Symfony\Component\HttpFoundation\Response;
 
 class Application extends \Silex\Application
 {
+    use UrlGeneratorTrait;
+
     public function __construct(array $values = array())
     {
         parent::__construct($values);
