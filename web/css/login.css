@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: table;
+
+    /* Radial gradient */
+    background: #496ab1; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #496ab1 0%, #1f3769 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#496ab1), color-stop(100%,#1f3769)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #496ab1 0%,#1f3769 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #496ab1 0%,#1f3769 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #496ab1 0%,#1f3769 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #496ab1 0%,#1f3769 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#496ab1', endColorstr='#1f3769',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.container {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.facebook {
+    display: block;
+    width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+
+    -moz-user-select: none;
+    background: #2A49A5;
+    border: 1px solid #082783;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 1px #4C6BC7 inset, 0px 10px 14px -7px #234373;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 0 -1px 0 #082783;
+    font: 18px Verdana, sans-serif;
+}

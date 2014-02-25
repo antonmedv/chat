@@ -1,0 +1,21 @@
+{
+    "name": "elfet/chat",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Elfet",
+            "email": "anton@elfet.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Elfet\\Chat\\": "src/"
+        }
+    },
+    "require": {
+        "silex/silex": "1.2.*",
+        "facebook/php-sdk": "3.2.*",
+        "cboden/ratchet": "0.3.*"
+    },
+    "minimum-stability": "dev"
+}
