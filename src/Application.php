@@ -61,11 +61,11 @@ class Application extends \Silex\Application
 
     public function render($viewPath, $params = [])
     {
+        $app = $this;
         $viewPath = $this['view_dir'] . $viewPath;
-
         $basePath = $this['request']->getBasePath();
-
         extract($params);
+
         ob_start();
         include $viewPath;
         $content = ob_get_clean();
