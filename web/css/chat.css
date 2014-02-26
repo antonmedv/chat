@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font: 14px Verdana, sans-serif;
+}
+
+.container {
+    padding: 10px;
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+.message .user {
+    float: left;
+}
+
+.message .user img {
+    border-radius: 50%;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.message .text {
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-left: 60px;
+    color: #fff;
+    padding: 15px;
+    max-width: 400px;
+    min-height: 50px;
+
+    background: rgb(61,86,226); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(61,86,226,1) 0%, rgba(44,83,158,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(61,86,226,1)), color-stop(100%,rgba(44,83,158,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(61,86,226,1) 0%,rgba(44,83,158,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(61,86,226,1) 0%,rgba(44,83,158,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(61,86,226,1) 0%,rgba(44,83,158,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(61,86,226,1) 0%,rgba(44,83,158,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d56e2', endColorstr='#2c539e',GradientType=0 ); /* IE6-9 */
+}
+
+.message.my .text {
+    margin-left: auto;
+    margin-right: 60px;
+
+    background: #7aaa00; /* Old browsers */
+    background: -moz-linear-gradient(top,  #7aaa00 0%, #668e00 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7aaa00), color-stop(100%,#668e00)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #7aaa00 0%,#668e00 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #7aaa00 0%,#668e00 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #7aaa00 0%,#668e00 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #7aaa00 0%,#668e00 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7aaa00', endColorstr='#668e00',GradientType=0 ); /* IE6-9 */
+}
+
+.message.my .user {
+    float: right;
+}
+
+.control {
+    background: #f0f0f0;
+    padding: 10px;
+}
+
+#message {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    font: 14px Verdana, sans-serif;
+    padding: 10px;
+    border: solid 1px #0a85d3;
+    border-radius: 5px;
+}
