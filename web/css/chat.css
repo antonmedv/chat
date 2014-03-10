@@ -9,6 +9,8 @@ html, body {
 
 .container {
     padding: 10px;
+    margin: 0 auto;
+    max-width: 800px;
 }
 
 .message {
@@ -26,45 +28,73 @@ html, body {
 }
 
 .message .text {
-    border-radius: 10px;
+    position: relative;
+    border-radius: 15px;
     box-sizing: border-box;
     margin-left: 60px;
-    color: #fff;
     padding: 15px;
     max-width: 400px;
     min-height: 50px;
+    background: #E5E5EA;
+    white-space: pre-line;
+}
 
-    background: rgb(61,86,226); /* Old browsers */
-    background: -moz-linear-gradient(top,  rgba(61,86,226,1) 0%, rgba(44,83,158,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(61,86,226,1)), color-stop(100%,rgba(44,83,158,1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  rgba(61,86,226,1) 0%,rgba(44,83,158,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  rgba(61,86,226,1) 0%,rgba(44,83,158,1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  rgba(61,86,226,1) 0%,rgba(44,83,158,1) 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  rgba(61,86,226,1) 0%,rgba(44,83,158,1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d56e2', endColorstr='#2c539e',GradientType=0 ); /* IE6-9 */
+.message .text:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 10px 9px 10px 0;
+    border-color: transparent #E5E5EA;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: -9px;
+    top: 15px;
 }
 
 .message.my .text {
     margin-left: auto;
     margin-right: 60px;
+    color: #fff;
+    background: #87d05b; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #87d05b 0%, #70c536 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #87d05b), color-stop(100%, #70c536)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, #87d05b 0%, #70c536 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, #87d05b 0%, #70c536 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, #87d05b 0%, #70c536 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center, #87d05b 0%, #70c536 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#87d05b', endColorstr='#70c536', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+}
 
-    background: #7aaa00; /* Old browsers */
-    background: -moz-linear-gradient(top,  #7aaa00 0%, #668e00 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7aaa00), color-stop(100%,#668e00)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #7aaa00 0%,#668e00 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #7aaa00 0%,#668e00 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #7aaa00 0%,#668e00 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #7aaa00 0%,#668e00 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7aaa00', endColorstr='#668e00',GradientType=0 ); /* IE6-9 */
+.message.my .text:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 10px 0 10px 9px;
+    border-color: transparent #70c536;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: auto;
+    right: -9px;
+    top: 15px;
 }
 
 .message.my .user {
     float: right;
 }
 
+.message .text.img {
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+
 .control {
     background: #f0f0f0;
     padding: 10px;
+    z-index: 10;
 }
 
 #message {
@@ -75,4 +105,18 @@ html, body {
     padding: 10px;
     border: solid 1px #0a85d3;
     border-radius: 5px;
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1224px) {
+    .container {
+        margin-bottom: 50px;
+    }
+
+    .control {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
 }
