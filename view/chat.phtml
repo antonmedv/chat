@@ -4,96 +4,34 @@
     <title>Elfet's Chat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="<?=$basePath?>/css/chat.css">
+    <link rel="stylesheet" type="text/css" href="<?= $basePath ?>/css/chat.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="<?= $basePath ?>/js/handlebars.js"></script>
+    <script src="<?= $basePath ?>/js/client.js"></script>
 </head>
 <body>
 <div class="container">
-    <div class="message">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!</div>
-    </div>
-
-    <div class="message my">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!</div>
-    </div>
-
-    <div class="message">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!</div>
-    </div>
-
-    <div class="message my">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!</div>
-    </div>
-    <div class="message">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!</div>
-    </div>
-
-    <div class="message my">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!</div>
-    </div>
-    <div class="message">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!</div>
-    </div>
-
-    <div class="message my">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!</div>
-    </div>
-    <div class="message">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!</div>
-    </div>
-
-    <div class="message my">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text img"
-             style="background-image: url('http://apikabu.ru/img_n/2012-06_5/cmm.jpg');"
-             onclick="window.open('http://apikabu.ru/img_n/2012-06_5/cmm.jpg');"
-            ></div>
-    </div>
-    <div class="message">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!</div>
-    </div>
-
-    <div class="message my">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!</div>
-    </div>
-    <div class="message">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!</div>
-    </div>
-
-    <div class="message my">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!</div>
-    </div>
-    <div class="message">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text img"
-             style="background-image: url('http://apikabu.ru/img_n/2012-06_5/cmm.jpg');"
-             onclick="window.open('http://apikabu.ru/img_n/2012-06_5/cmm.jpg');"
-            ></div>
-    </div>
-
-    <div class="message my">
-        <a class="user" href=""><img src="<?=$user['pic_square']?>" title="<?=$user['name']?>"></a>
-        <div class="text">Hello World!
-        sdgserg
-        esrgerg
-        sergwergwergwerlkgnqerlkfgjqwlekf]we]
-        erkgjer</div>
-    </div>
+    <script id="message" type="text/x-handlebars-template">
+        <div class="message {{#if my}}my{{/if}}">
+            <a class="user" href="{{user.profile_url}}" target="_blank"><img src="{{user.pic_square}}" title="{{user.name}}"></a>
+            {{#if image}}
+                <div class="text img"
+                     style="background-image: url('{{text}}');"
+                     onclick="window.open('{{text}}');"></div>
+            {{else}}
+                <div class="text">{{text}}</div>
+            {{/if}}
+        </div>
+    </script>
 </div>
 <div class="control">
-    <input type="text" name="message" id="message" placeholder="Type message and press Enter">
+    <form>
+        <input type="text" name="text" id="text" placeholder="Type message and press Enter" tabindex="1">
+    </form>
 </div>
+<script>
+    var me = <?=json_encode($app['user'])?>;
+    connect('<?=$app['server.host']?>', '<?=$app['server.port']?>');
+</script>
 </body>
 </html>

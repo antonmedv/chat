@@ -1,7 +1,7 @@
 <?php
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
-$app = new Elfet\Chat\Application(include __DIR__ . '/../config.php');
+$app = new Elfet\Chat\Application(include __DIR__ . '/config.php');
 
 $app->get('/', function () use ($app) {
     return $app->render('chat.phtml', [

@@ -97,7 +97,7 @@ html, body {
     z-index: 10;
 }
 
-#message {
+#text {
     display: block;
     box-sizing: border-box;
     width: 100%;

@@ -11,6 +11,8 @@ use Silex\Application\UrlGeneratorTrait;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcacheSessionHandler;
+use Whoops\Provider\Silex\WhoopsServiceProvider;
 
 class Application extends \Silex\Application
 {
@@ -24,6 +26,16 @@ class Application extends \Silex\Application
 
         $app->register(new UrlGeneratorServiceProvider());
         $app->register(new SessionServiceProvider());
+
+        if (true === $app['debug']) {
+            $app->register(new WhoopsServiceProvider);
+        }
+
+        $app['session.storage.handler'] = $app->share(function ($app) {
+            $memcache = new \Memcache();
+            $memcache->connect('localhost', 11211);
+            return new MemcacheSessionHandler($memcache);
+        });
 
         $app['facebook'] = $app->share(function () use ($app) {
             return new \Facebook([
@@ -44,7 +56,7 @@ class Application extends \Silex\Application
                 $facebook = $app['facebook'];
                 $result = $facebook->api(array(
                     'method' => 'fql.query',
-                    'query' => 'SELECT uid, name, pic_square FROM user WHERE uid = me()',
+                    'query' => 'SELECT uid, name, pic_square, profile_url FROM user WHERE uid = me()',
                 ));
 
                 if (!empty($result)) {
